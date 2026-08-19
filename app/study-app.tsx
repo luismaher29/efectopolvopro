@@ -128,6 +128,10 @@ function AccessScreen({ onSuccess }: { onSuccess: () => void }) {
         {error && <div className="access-error" role="alert">{error}</div>}
         <button type="submit">Acceder a Efecto Polvo PRO <Icon name="arrow" /></button>
       </form>
+      <a className="purchase-link" href="https://guiapigmentologia.vercel.app/" target="_blank" rel="noreferrer">
+        <span>¿Todavía no tienes acceso?</span>
+        <b>Adquiere tu guía aquí <Icon name="arrow" /></b>
+      </a>
       <small>El acceso se guardará en este dispositivo. No necesitas crear una cuenta.</small>
     </section>
   </main>;
