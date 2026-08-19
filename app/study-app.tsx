@@ -37,7 +37,7 @@ export function StudyApp() {
 
   const go = (next: View) => { setView(next); window.scrollTo({ top: 0, behavior: "smooth" }); };
   const startQuiz = (moduleId: string) => {
-    const pool = moduleId === "global" ? questions.filter((_, i) => i % 2 === 0 || i % 3 === 0).slice(0, 16) : questions.filter(q => q.moduleId === moduleId);
+    const pool = moduleId === "global" ? modules.flatMap(module => questions.filter(q => q.moduleId === module.id).slice(0, 3)) : questions.filter(q => q.moduleId === moduleId);
     setActiveModule(moduleId); setQuiz(pool); setIndex(0); setSelected(null); setScore(0); setFinished(false); go("quiz");
   };
   const answer = (choice: number) => { if (selected !== null) return; setSelected(choice); if (choice === quiz[index].answer) setScore(s => s + 1); };
@@ -69,7 +69,7 @@ export function StudyApp() {
           <p className="lead">Pon a prueba tu criterio en cejas efecto polvo y convierte cada decisión técnica en un resultado consciente.</p>
           <p className="support">Una experiencia de estudio basada en la guía de Verónica Montaño: fundamentos, arte, piel, cicatrización, equipos y práctica profesional.</p>
           <div className="actions"><button className="primary" onClick={() => startQuiz("global")}>Comenzar evaluación <Icon name="arrow" /></button><button className="secondary" onClick={() => go("modules")}>Explorar módulos</button></div>
-          <div className="micro-stats"><span><b>8</b> módulos</span><span><b>24</b> preguntas</span><span><b>100%</b> práctico</span></div>
+          <div className="micro-stats"><span><b>8</b> módulos</span><span><b>64</b> preguntas</span><span><b>100%</b> práctico</span></div>
         </div>
         <div className="hero-art" aria-label="Representación artística de un degradado efecto polvo">
           <div className="orb orb-one"/><div className="orb orb-two"/><div className="brow"><span/><span/><span/></div>
